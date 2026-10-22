@@ -1,0 +1,85 @@
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Frontend dependencies and builds
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Generated indexes and logs
+indexes/
+*.log
+
+# Compiled test executables
+BWTTest.exe
+BenchmarkTest.exe
+CompressionBenchmark.exe
+CompressionDebug.exe
+CompressionFileTest.exe
+CompressionIntegrityTest.exe
+CompressionTest.exe
+DatasetGenerator.exe
+FullSystemTest.exe
+GraphTest.exe
+IndexPersistenceTest.exe
+IndexTest.exe
+MTFTest.exe
+PerformanceTest.exe
+RLETest.exe
+SmartFileSearchEngine.exe
+SpellCorrectionTest.exe
+SpellTest.exe
+TextProcessorTest.exe
+WebBridge.backup.exe
+WebBridge.new.exe
+WebBridge.recommend.exe
+TextProcessorTest.exe
+
+# Windows C++ executables
+/WebBridge.exe
+/WebBridge.recommend.exe
+
+# Python virtual environments
+backend/venv/
+venv/
+
+
+# User uploads and generated extracted files
+/backend/uploads/
+/backend/extracted/
+
+# Generated compression and restoration outputs
+/data/compressed/
+/data/compressed_debug/
+/data/integrity_test/
+/data/restored/
+
+# Python caches
+**/__pycache__/
+
+# Uploaded documents containing personal information
+/data/documents/1602d016-1b54-41b7-8bb2-47600649b3c8.txt
+/data/documents/76be784d-ad55-4a0d-b93f-2248ab29543e.txt
+/data/documents/83ad18cd-6ed6-4a9f-9863-4f9b4ecf83a0.txt
+/data/documents/e709968b-732d-4ec4-b1a6-51e7bd6e12a0.txt
+
+# Extra root-level sample files
+/3
+/4
+/5
