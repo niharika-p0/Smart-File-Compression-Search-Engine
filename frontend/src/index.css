@@ -109,3 +109,21 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* Override starter-template root constraints */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#root {
+  display: block;
+  text-align: left;
+  border: 0;
+}
+

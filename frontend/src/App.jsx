@@ -499,38 +499,69 @@ const handleRestore = async () => {
   const renderDashboard = () => (
     <section className="dashboard-page">
       <section className="hero-section">
-        <div className="eyebrow"><span /> YOUR DOCUMENT WORKSPACE</div>
-        <h1>Find anything.<br /><span>Faster.</span></h1>
-        <p>
-          One workspace to search, organize and compress your documents
-          with intelligent algorithms.
-        </p>
+  <div className="hero-copy">
+    <div className="eyebrow"><span /> YOUR DOCUMENT WORKSPACE</div>
+    <h1>Your files,<br /><span>in good order.</span></h1>
+    <p className="hero-description">
+      A little more organized, a lot easier to find. Search, compress,
+      and restore your documents in one friendly workspace.
+    </p>
+    <div className="hero-actions">
+      <button className="primary-button" onClick={() => goToPage("documents")}>
+        + Add documents
+      </button>
+    </div>
+  </div>
 
-        <button
-          className="primary-button"
-          onClick={() => goToPage("documents")}
-        >
-          + Add documents
-        </button>
+  <div className="hero-art" aria-hidden="true">
+    <div className="hero-tape"></div>
+    <svg viewBox="0 0 420 300" role="img" xmlns="http://www.w3.org/2000/svg">
+      <path d="M28 250 C70 265 100 255 130 267" fill="none" stroke="#cf302f" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="3 7"/>
+      <path d="M320 40 Q344 22 360 43 Q385 36 391 58 Q385 76 359 72 L329 72" fill="none" stroke="#34302c" strokeWidth="2.5" strokeLinecap="round"/>
+      <path d="M374 77 L389 72 L381 86" fill="none" stroke="#cf302f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <g transform="rotate(-8 174 145)">
+        <rect x="75" y="53" width="190" height="205" rx="7" fill="#e9d8bd" stroke="#34302c" strokeWidth="2.5"/>
+        <path d="M95 88 H239 M95 108 H221 M95 128 H235 M95 148 H205" stroke="#b9a58e" strokeWidth="2"/>
+        <path d="M95 180 H225 M95 200 H215 M95 220 H230" stroke="#c8b6a1" strokeWidth="2"/>
+      </g>
+      <g transform="rotate(7 235 142)">
+        <rect x="150" y="42" width="180" height="210" rx="7" fill="#fffaf2" stroke="#34302c" strokeWidth="2.5"/>
+        <path d="M172 78 H305 M172 98 H292 M172 118 H306" stroke="#c9c0b2" strokeWidth="2"/>
+        <rect x="172" y="139" width="133" height="62" rx="5" fill="#f6e982" stroke="#34302c" strokeWidth="2"/>
+        <path d="M184 158 H291 M184 174 H277 M184 190 H263" stroke="#a89a60" strokeWidth="2"/>
+        <path d="M172 220 H299" stroke="#c9c0b2" strokeWidth="2"/>
+      </g>
+      <g transform="rotate(-13 260 226)">
+        <path d="M224 218 L290 218 L282 239 L216 239 Z" fill="#cf302f" stroke="#34302c" strokeWidth="2"/>
+        <path d="M216 239 L224 218 L232 239 Z" fill="#f3d3a9" stroke="#34302c" strokeWidth="2" strokeLinejoin="round"/>
+        <path d="M216 239 L224 235 L232 239 L224 249 Z" fill="#34302c"/>
+      </g>
+      <path d="M58 75 L64 61 L70 75 L84 81 L70 87 L64 101 L58 87 L44 81 Z" fill="#e8ad86" stroke="#34302c" strokeWidth="1.8" strokeLinejoin="round"/>
+      <path d="M348 220 L352 210 L356 220 L366 224 L356 228 L352 238 L348 228 L338 224 Z" fill="#f6e982" stroke="#34302c" strokeWidth="1.8" strokeLinejoin="round"/>
+      <path d="M54 170 Q43 158 33 171 Q24 185 43 193 Q60 198 65 182" fill="none" stroke="#34302c" strokeWidth="2.5" strokeLinecap="round"/>
+      <path d="M61 176 L65 183 L72 177" fill="none" stroke="#cf302f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+    <span className="art-note">one thing at a time!</span>
+  </div>
 
-        <form
-          className="search-bar dashboard-search"
-          onSubmit={(event) => {
-            event.preventDefault();
-            goToPage("search");
-            runSearch(searchQuery);
-          }}
-        >
-          <span className="search-icon">⌕</span>
-          <input
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            placeholder="Search documents, assignments, notes..."
-            aria-label="Search documents"
-          />
-          <button className="primary-button" type="submit">Search →</button>
-        </form>
-      </section>
+  <form
+    className="search-bar dashboard-search"
+    onSubmit={(event) => {
+      event.preventDefault();
+      goToPage("search");
+      runSearch(searchQuery);
+    }}
+  >
+    <span className="search-icon">⌕</span>
+    <input
+      value={searchQuery}
+      onChange={(event) => setSearchQuery(event.target.value)}
+      placeholder="Search documents, assignments, notes..."
+      aria-label="Search documents"
+    />
+    <button className="primary-button" type="submit">Search →</button>
+  </form>
+</section>
 
       <div className="section-heading">
         <div>
