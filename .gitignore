@@ -83,3 +83,12 @@ venv/
 /3
 /4
 /5
+
+/ Linux build output
+/WebBridge-linux
+*.backup
+*.backup.*
+
+# Keep local document datasets private
+/data/documents/*
+!/data/documents/.gitkeep

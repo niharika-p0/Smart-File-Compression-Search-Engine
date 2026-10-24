@@ -1,11 +1,12 @@
 
 from pathlib import Path
+import os
 import json
 import subprocess
 
 BASE_DIR = Path(__file__).resolve().parents[3]
-CPP_EXE = BASE_DIR / "WebBridge.exe"
-RECOMMEND_EXE = BASE_DIR / "WebBridge.recommend.exe"
+CPP_EXE = BASE_DIR / ("WebBridge.exe" if os.name == "nt" else "WebBridge-linux")
+RECOMMEND_EXE = BASE_DIR / ("WebBridge.recommend.exe" if os.name == "nt" else "WebBridge-linux")
 DEFAULT_DOCUMENT_DIRECTORY = BASE_DIR / "data" / "documents"
 
 

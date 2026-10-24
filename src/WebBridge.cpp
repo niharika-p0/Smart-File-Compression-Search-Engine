@@ -239,6 +239,94 @@ int main(int argc, char* argv[])
         return 0;
     }
 
+
+    if (command == "restore")
+    {
+        if (argc < 4)
+        {
+            printError("Usage: WebBridge.exe restore <input_file> <output_file>");
+            return 1;
+        }
+
+        const std::string inputFile = argv[2];
+        const std::string outputFile = argv[3];
+
+        if (!fs::exists(inputFile) || !fs::is_regular_file(inputFile))
+        {
+            printError("Input file not found");
+            return 1;
+        }
+
+        std::ifstream input(inputFile, std::ios::binary);
+        if (!input)
+        {
+            printError("Unable to open compressed input file");
+            return 1;
+        }
+
+        std::string compressedData(
+            (std::istreambuf_iterator<char>(input)),
+            std::istreambuf_iterator<char>()
+        );
+        input.close();
+
+        CompressionPipeline pipeline;
+        std::string restoredData;
+
+        try
+        {
+            restoredData = pipeline.decompress(compressedData);
+        }
+        catch (const std::exception& e)
+        {
+            printError(std::string("Restore failed: ") + e.what());
+            return 1;
+        }
+
+        if (restoredData.empty())
+        {
+            printError("Restore failed: decompression returned empty data");
+            return 1;
+        }
+
+        fs::path outputPath(outputFile);
+        if (outputPath.has_parent_path())
+        {
+            fs::create_directories(outputPath.parent_path());
+        }
+
+        std::ofstream output(
+            outputFile,
+            std::ios::binary | std::ios::trunc
+        );
+
+        if (!output)
+        {
+            printError("Unable to create restored output file");
+            return 1;
+        }
+
+        output.write(
+            restoredData.data(),
+            static_cast<std::streamsize>(restoredData.size())
+        );
+
+        if (!output)
+        {
+            printError("Failed writing restored output file");
+            return 1;
+        }
+
+        std::cout
+            << "{"
+            << "\"success\":true,"
+            << "\"restored_file\":\"" << jsonEscape(outputFile) << "\","
+            << "\"restored_size\":" << restoredData.size()
+            << "}";
+
+        return 0;
+    }
+
    
     /*
         RECOMMEND
